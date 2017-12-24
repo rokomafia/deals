@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Admin Page</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+	
+		<form th:action="@{/logout}" method="get">
+			<button class="btn btn-md btn-danger btn-block" name="registration" type="Submit">Logout</button>
+		</form>    
+		
+		<div class="panel-group" style="margin-top:40px">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span th:utext="${userName}"></span>
+				</div>
+				<div class="panel-body">
+					<div id="sandbox">
+						<input class="search" placeholder="Search" />
+						<button class="btn btn-md btn-primary" data-sort="project-name">
+							Sort by name
+						</button>
+						<button class="sort" data-sort="project-title">
+							Sort by Project
+						</button>
+						<button class="sort" data-sort="project-label">
+							Sort by Label
+						</button>
+						<button class="sort" id="viewSwitch">
+							Change View
+						</button>
+
+						<ul class="list" id="list">
+							<li>
+								<img src="http://placehold.it/120x120" alt="#" />
+								<p class="project-name" th:utext="${dealName}"></p>
+								<p class="project-title" th:utext="${dealPrice}">Yeezus</p>
+								<p class="project-label">GOOD Music</p>
+								<a href=""><i class="glyphicon glyphicon-pencil"></i></a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+
+				<p class="admin-message-text text-center" th:utext="${userMessage}"></p>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>
