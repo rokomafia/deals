@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DealController {
 
-    @Autowired
+    /*@Autowired
     DealService dealService;
 
     @Autowired
@@ -33,5 +33,5 @@ public class DealController {
         modelAndView.addObject("dealPrice", deal.getPrice());
         modelAndView.setViewName("/user/home");
         return modelAndView;
-    }
+    }*/
 }

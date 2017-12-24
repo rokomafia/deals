@@ -5,6 +5,8 @@ import com.deals.repository.DealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("dealService")
 public class DealServiceImpl implements DealService {
 
@@ -19,6 +21,11 @@ public class DealServiceImpl implements DealService {
     @Override
     public void saveDeal(Deal deal) {
         dealRepository.save(deal);
+    }
+
+    @Override
+    public List<Deal> getAll(){
+        return dealRepository.findAll();
     }
 
 }

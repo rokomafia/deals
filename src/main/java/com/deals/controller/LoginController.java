@@ -2,6 +2,8 @@ package com.deals.controller;
 
 import javax.validation.Valid;
 
+import com.deals.model.Deal;
+import com.deals.service.DealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,11 +16,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.deals.model.User;
 import com.deals.service.UserService;
 
+import java.util.List;
+
 @Controller
 public class LoginController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	DealService dealService;
 
 	@RequestMapping("/index")
 	public String index() {
@@ -73,17 +79,33 @@ public class LoginController {
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
-/*
-	@RequestMapping(value="/user/home", method = RequestMethod.GET)
-	public ModelAndView userHome(){
+
+	/*@RequestMapping(value="/user/home", method = RequestMethod.GET)
+	public ModelAndView userHome() {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
 		modelAndView.addObject("userMessage","Content Available Only for authorised Users and Admin");
-		modelAndView.setViewName("user/home");
+		Deal deal = dealService.findDealByName("test");
+		modelAndView.addObject("dealName", deal.getName());
+		modelAndView.addObject("dealPrice", deal.getPrice());
+		modelAndView.setViewName("/user/home");
 		return modelAndView;
 	}*/
+	@RequestMapping(value="/user/home", method = RequestMethod.GET)
+	public ModelAndView userHome() {
+		ModelAndView modelAndView = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+		modelAndView.addObject("userMessage","Content Available Only for authorised Users and Admin");
+
+		List<Deal> deals= dealService.getAll();
+		modelAndView.addObject("deals",deals);
+		modelAndView.setViewName("/user/home");
+		return modelAndView;
+	}
 	
 
 }
