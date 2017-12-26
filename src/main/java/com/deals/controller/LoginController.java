@@ -49,7 +49,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+	public ModelAndView registration(@Valid User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
@@ -80,19 +80,6 @@ public class LoginController {
 		return modelAndView;
 	}
 
-	/*@RequestMapping(value="/user/home", method = RequestMethod.GET)
-	public ModelAndView userHome() {
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("userMessage","Content Available Only for authorised Users and Admin");
-		Deal deal = dealService.findDealByName("test");
-		modelAndView.addObject("dealName", deal.getName());
-		modelAndView.addObject("dealPrice", deal.getPrice());
-		modelAndView.setViewName("/user/home");
-		return modelAndView;
-	}*/
 	@RequestMapping(value="/user/home", method = RequestMethod.GET)
 	public ModelAndView userHome() {
 		ModelAndView modelAndView = new ModelAndView();

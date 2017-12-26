@@ -1,5 +1,10 @@
-.admin-message-text {
+.user-message-text {
 	font-style: normal;
-	font-size: 22px;
+	font-size: 15px;
 	color: #004080;
+}
+.logout-group>label, .logout-group>button{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px 0;
 }
