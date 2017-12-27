@@ -15,15 +15,20 @@
 <body>
 
 <div class="wrapper">
-
+	<!-- .header-->
 	<header class="header">
         <span><a href="/"><img th:src="@{/images/logo.png}" width="" height="80"/></a></span>
         <span class="shape"><img th:src="@{/images/shape.png}" width="" height="16"/></span>
 		<span class="profile" th:action="@{/admin/home}" method="get"><a href="/admin/home" class="dropdown">Профиль</a></span>
-		<span class="logo"><form th:action="@{/}" method="get">
-		<button class="btn btn-md btn-warning btn-block" type="Submit">+ Добавить</button>
-	</form></span>
-	</header><!-- .header-->
+		<span class="logo">
+		<form th:action="@{/newdeal}" method="get">
+			<button class="btn btn-md btn-warning btn-block" type="Submit">+ Добавить</button>
+		</form></span>
+	</header>
+
+
+
+
 
 	<main class="content">
 	<h2>Работы и конкурсы</h2>

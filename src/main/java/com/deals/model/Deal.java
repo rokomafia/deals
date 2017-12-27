@@ -6,7 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -17,19 +19,20 @@ public class Deal {
     @Column(name = "dealid")
     private int dealid;
     @Column(name = "name")
+    @Length(max = 45, message = "*Deal Summary must have not more than 45 characters")
     @NotEmpty(message = "*Please provide your title")
     private String name;
     @Column(name = "categoryid")
-    @NotEmpty(message = "*Please provide your category")
+    @NotNull(message = "*Please provide your category")
     private int categoryid;
     @Column(name = "userid")
-    @NotEmpty(message = "*Please provide your user")
+    @NotNull(message = "*Please provide your user")
     private int userid;
     @Column(name = "cityid")
-    @NotEmpty(message = "*Please provide your city")
+    @NotNull(message = "*Please provide your city")
     private int cityid;
     @Column(name = "price")
-    @NotEmpty(message = "*Please provide your price")
+    @NotNull(message = "*Please provide your price")
     private float price;
 
     public int getDealid() {

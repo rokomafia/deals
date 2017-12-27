@@ -90,6 +90,7 @@ public class LoginController {
 
 		List<Deal> deals= dealService.getAll();
 		modelAndView.addObject("deals",deals);
+		modelAndView.addObject("user",user);
 		modelAndView.setViewName("/user/home");
 		return modelAndView;
 	}
