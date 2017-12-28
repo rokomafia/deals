@@ -26,12 +26,12 @@ public class LoginController {
 	@Autowired
 	DealService dealService;
 
-	@RequestMapping("/index")
+	@RequestMapping(value={"/","/index"})
 	public String index() {
 		return "/index";
 	}
 
-	@RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
@@ -92,6 +92,16 @@ public class LoginController {
 		modelAndView.addObject("deals",deals);
 		modelAndView.addObject("user",user);
 		modelAndView.setViewName("/user/home");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = {"/user/profile"}, method = RequestMethod.GET)
+	public ModelAndView profile() {
+		ModelAndView modelAndView = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("user",user);
+		modelAndView.setViewName("/user/profile");
 		return modelAndView;
 	}
 	

@@ -84,18 +84,11 @@ body {
 	top: 25px;
     right: 130px;
 }
-.logo{
+.add-deal{
 	position: absolute;
 	top: 20px;
     right: 5px;
 }
-
-#dropdown ul li.custom-button a{
-		color:#961D2C;
-	}
-	#dropdown ul li.custom-button a:active{
-		color:#fff;
-	}
 
 
 
@@ -103,6 +96,7 @@ body {
 -----------------------------------------------------------------------------*/
 .content {
 	padding: 0 0 100px;
+	height: 100%;
 	border: 1px solid #dddddd;
 }
 .search {
@@ -110,13 +104,6 @@ body {
 	text-align: center;
 	padding:20px;
 	background: #FFE680;
-}
-
-
-.deals {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 98%;
 }
 
 td, th {
@@ -133,13 +120,14 @@ tr:nth-child(even) {
 /* Footer
 -----------------------------------------------------------------------------*/
 .footer {
+position: relative;
 	width: 1000px;
 	margin: -100px auto 0;
-	height: 50px;
+	height: 60px;
     	text-align: center;
     	padding-top:20px;
 	background: #2196F3;
-	position: relative;
+	clear:both;
 }
 
 /* Menu css

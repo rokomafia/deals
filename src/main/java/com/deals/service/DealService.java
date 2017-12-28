@@ -8,4 +8,5 @@ public interface DealService {
     public Deal findDealByName(String name);
     public void saveDeal(Deal deal);
     public List<Deal> getAll();
+    public Deal findDealById(Long id);
 }

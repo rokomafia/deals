@@ -28,4 +28,9 @@ public class DealServiceImpl implements DealService {
         return dealRepository.findAll();
     }
 
+    @Override
+    public Deal findDealById(Long id){
+        return dealRepository.findOne(id);
+    }
+
 }

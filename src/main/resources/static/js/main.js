@@ -42,6 +42,15 @@ $(document).ready(function(e) {
     });
 
 $(document).ready(function(){
+		$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("div#summary").filter(function() {
+		$(this).parents("div[id^='panel_']").toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+			});
+		});
+
+/*$(document).ready(function(){
 		var navItems = $('.admin-menu li > a');
 		var navListItems = $('.admin-menu li');
 		var allWells = $('.admin-content');
@@ -58,13 +67,6 @@ $(document).ready(function(){
         var target = $(this).attr('data-target-id');
         $('#' + target).show();
     });
-});
+});*/
 
-$(document).ready(function(){
-		$("#myInput").on("keyup", function() {
-		var value = $(this).val().toLowerCase();
-		$("div#summary").filter(function() {
-		$(this).parents("div[id^='panel_']").toggle($(this).text().toLowerCase().indexOf(value) > -1)
-				});
-			});
-		});
+
