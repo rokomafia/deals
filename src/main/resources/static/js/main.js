@@ -6,7 +6,7 @@ $(document).ready(function(e) {
   			   buttons:[
   			       //Button 1
   				   {
-  					   text: 'Profile', //Inner HTML
+  					   text: 'Home', //Inner HTML
   					   href: '/user/home', //<a> href
   					   addClass: 'custom-button', //<li> Class
   					   onClick: function(p,e){
@@ -20,7 +20,7 @@ $(document).ready(function(e) {
   				   //Button 2
   				   {
                          text: 'Profile',
-                         href: '/',
+                         href: '/user/profile',
                          addClass: '',
                          onClick: function(p, e){ return true; }
                      },
