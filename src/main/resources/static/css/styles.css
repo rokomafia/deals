@@ -111,12 +111,7 @@ body {
 	padding:20px;
 	background: #FFE680;
 }
-.tabs {
-	width: 500px;
-	text-align: center;
-	padding:20px;
-	background: #FFE680;
-}
+
 
 .deals {
     font-family: arial, sans-serif;
@@ -140,15 +135,42 @@ tr:nth-child(even) {
 .footer {
 	width: 1000px;
 	margin: -100px auto 0;
-	height: 40px;
+	height: 50px;
     	text-align: center;
     	padding-top:20px;
 	background: #2196F3;
 	position: relative;
 }
 
+/* Menu css
+-----------------------------------------------------------------------------*/
+#dropdown ul li.custom-button a{
+		color:#961D2C;
+	}
+	#dropdown ul li.custom-button a:active{
+		color:#fff;
+	}
+
+/* Home css
+-----------------------------------------------------------------------------*/
+.user-message-text {
+	font-style: normal;
+	font-size: 15px;
+	color: #004080;
+}
+.logout-group>label, .logout-group>button{
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px 0;
+}
+
+/* Registration css
+-----------------------------------------------------------------------------*/
 .validation-message {
 	font-style: normal;
 	font-size: 12px;
 	color: #FF1C19;
 }
+
+/* Login css
+-----------------------------------------------------------------------------*/
