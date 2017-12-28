@@ -4,9 +4,9 @@
 <head>
     <title>Create Deal Form</title>
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <link href="../static/css/jquery.dropdown.css" th:href="@{/css/jquery.dropdown.css}" rel="stylesheet" />
 </head>
 
 <body>
@@ -16,7 +16,7 @@
     <header class="header">
         <span><a href="/"><img th:src="@{/images/logo.png}" width="" height="80"/></a></span>
         <span class="shape"><img th:src="@{/images/shape.png}" width="" height="16"/></span>
-        <span class="profile" th:action="@{/admin/home}" method="get"><a href="/admin/home" class="dropdown">Профиль</a></span>
+        <span class="profile"><a href="#" class="dropdown">Профиль</a></span>
         <span class="logo">
 		<form th:action="@{/newdeal}" method="get">
 			<button class="btn btn-md btn-info btn-block" type="Submit">+ Добавить</button>
@@ -76,7 +76,7 @@
 
 
 <script th:src="@{/js/jquery.min.js}"></script>
-<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/jquery.dropdown.min.js}"></script>
 

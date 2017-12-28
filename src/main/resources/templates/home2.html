@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User Profile  Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<!-- Left Menu Bar-->
+<div class="container" style="margin-top:60px">
+    <div class="row">
+        <div class="col-md-3" >
+            <ul class="nav nav-pills nav-stacked admin-menu">
+                <li class="active"><a data-target-id="deals" data-toggle="collapse" data-target="#drilldown-1">Home</a>
+                    <div style="padding-left:5px;">
+                        <ul id="drilldown-1" class="nav nav-pills nav-stacked collapse">
+                            <li><a data-target-id="created-deals">Created Deals</a></li>
+                            <li><a data-target-id="accepted-deals">Accepted Deals</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a  data-target-id="profile"><i class="fa fa-list-alt fa-fw"></i>Profile Info</a></li>
+                <li><a  data-target-id="logout"><i class="fa fa-bar-chart-o fa-fw"></i>Log out</a></li>
+            </ul>
+        </div>
+        <!-- Menu Content -->
+        <div class="col-md-9 well admin-content" id="deals">
+            <p th:utext="${userName}"></p>
+        </div>
+        <div class="col-md-9 well admin-content" id="profile">
+            <div class="panel-heading" th:text="${user.getName()}" id="userName"> </div>
+            <div class="panel-heading" th:text="${user.getLastName()}" id="userLastName"> </div>
+            <div class="panel-heading" th:text="${user.getEmail()}" id="userEmail"> </div>
+        </div>
+        <div class="col-md-9 well admin-content" id="created-deals">
+            <!-- Created deals content -->
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+            <button class="btn btn-md btn-info" data-sort="project-name">Sort by Summary</button>
+            <button class="btn btn-md btn-info" data-sort="project-title">Sort by Category</button>
+            <button class="btn btn-md btn-info" data-sort="project-label">Sort by Price</button>
+            <button class="btn btn-md btn-info" id="viewSwitch">Change View</button>
+
+            <div class="panel-group" th:each="currentDeal,iterationStatus: ${deals}">
+                <br>
+                <div class="panel panel-default" th:id="'panel_'+${iterationStatus.index}">
+                    <div class="panel-heading" th:text="${currentDeal.getName()}" id="summary"> Summary </div>
+                    <div class="panel-body" th:text="${currentDeal.getDescription()}" id="description"> Description </div>
+                    <div class="panel-body" th:text="${currentDeal.getPrice()}"> Price </div>
+                    <a href=""><i class="glyphicon glyphicon-pencil"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 well admin-content" id="logout">
+            <form class="logout-group" th:action="@{/logout}" method="get">
+                <label >Are You sure You want to log out ?</label>
+                <button class="btn btn-md btn-danger btn-md" name="registration" type="Submit">Yes</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+		$(document).ready(function(){
+		var navItems = $('.admin-menu li > a');
+		var navListItems = $('.admin-menu li');
+		var allWells = $('.admin-content');
+		var allWellsExceptFirst = $('.admin-content:not(:first)');
+
+		allWellsExceptFirst.hide();
+		navItems.click(function(e)
+    	{
+        e.preventDefault();
+        navListItems.removeClass('active');
+        $(this).closest('li').addClass('active');
+
+        allWells.hide();
+        var target = $(this).attr('data-target-id');
+        $('#' + target).show();
+    });
+});
+	</script>
+<script>
+		$(document).ready(function(){
+		$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("div#summary").filter(function() {
+		$(this).parents("div[id^='panel_']").toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+			});
+		});
+
+	</script>
+
+</body>
+</html>

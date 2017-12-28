@@ -40,3 +40,31 @@ $(document).ready(function(e) {
   		   });
 
     });
+
+$(document).ready(function(){
+		var navItems = $('.admin-menu li > a');
+		var navListItems = $('.admin-menu li');
+		var allWells = $('.admin-content');
+		var allWellsExceptFirst = $('.admin-content:not(:first)');
+
+		allWellsExceptFirst.hide();
+		navItems.click(function(e)
+    	{
+        e.preventDefault();
+        navListItems.removeClass('active');
+        $(this).closest('li').addClass('active');
+
+        allWells.hide();
+        var target = $(this).attr('data-target-id');
+        $('#' + target).show();
+    });
+});
+
+$(document).ready(function(){
+		$("#myInput").on("keyup", function() {
+		var value = $(this).val().toLowerCase();
+		$("div#summary").filter(function() {
+		$(this).parents("div[id^='panel_']").toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+			});
+		});
