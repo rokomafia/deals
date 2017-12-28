@@ -45,6 +45,13 @@
 
                         <div class="form-group">
                             <div class="col-sm-9">
+                                <label th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="validation-message"></label>
+                                <input type="text" th:field="*{description}" placeholder="Description" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-9">
                                 <label	th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="validation-message"></label>
                                 <input type="text" th:field="*{price}" placeholder="Price" class="form-control" />
                             </div>
