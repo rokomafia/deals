@@ -34,6 +34,18 @@ public class Deal {
     @Column(name = "price")
     @NotNull(message = "*Please provide your price")
     private float price;
+    @Column(name = "description")
+    @Length(max = 200, message = "*Deal description must have not more than 200 characters")
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Deal setDescription(String description) {
+        this.description = description;
+        return this;
+    }
 
     public int getDealid() {
         return dealid;

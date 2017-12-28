@@ -49,6 +49,7 @@
 					<br>
 					<div class="panel panel-default" th:id="'panel_'+${iterationStatus.index}">
 						<div class="panel-heading" th:text="${currentDeal.getName()}" id="summary"> Summary </div>
+						<div class="panel-body" th:text="${currentDeal.getDescription()}" id="description"> Description </div>
 						<div class="panel-body" th:text="${currentDeal.getPrice()}"> Price </div>
 						<a href=""><i class="glyphicon glyphicon-pencil"></i></a>
 					</div>
