@@ -97,7 +97,7 @@ body {
 .content {
 	padding: 0 0 100px;
 	height: 100%;
-	border: 1px solid #dddddd;
+
 }
 .search {
 	height: ;
@@ -107,7 +107,7 @@ body {
 }
 
 td, th {
-    border: 1px solid #dddddd;
+
     text-align: left;
     padding: 8px;
 }

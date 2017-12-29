@@ -43,10 +43,10 @@ public class DealController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         deal.setCategoryid(1).setCityid(1).setUserid(user.getId());
+        modelAndView.addObject("successMessage", "Deal has been created successfully");
+        modelAndView.addObject("deal", new Deal());
+        modelAndView.setViewName("redirect:/index");
             dealService.saveDeal(deal);
-            modelAndView.addObject("successMessage", "Deal has been created successfully");
-            modelAndView.addObject("deal", new Deal());
-            modelAndView.setViewName("redirect:/index");
         return modelAndView;
     }
 

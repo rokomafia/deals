@@ -17,7 +17,7 @@ public class Deal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "dealid")
-    private long dealid;
+    private Long dealid;
     @Column(name = "name")
     @Length(max = 45, message = "*Deal Summary must have not more than 45 characters")
     @NotEmpty(message = "*Please provide your title")
@@ -47,11 +47,11 @@ public class Deal {
         return this;
     }
 
-    public long getDealid() {
+    public Long getDealid() {
         return dealid;
     }
 
-    public Deal setDealid(int dealid) {
+    public Deal setDealid(Long dealid) {
         this.dealid = dealid;
         return this;
     }
