@@ -9,4 +9,5 @@ public interface DealService {
     public void saveDeal(Deal deal);
     public List<Deal> getAll();
     public Deal findDealById(Long id);
+    public void deleteDealById(Long id);
 }

@@ -33,4 +33,10 @@ public class DealServiceImpl implements DealService {
         return dealRepository.findOne(id);
     }
 
+    @Override
+    public void deleteDealById(Long id) {
+        dealRepository.delete(id);
+    }
+
+
 }

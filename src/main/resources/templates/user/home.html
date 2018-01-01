@@ -3,7 +3,6 @@
 	  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8" />
-	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
 	<title>Deals</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
@@ -46,6 +45,11 @@
 							<div class="panel-body" th:text="${currentDeal.getPrice()}"> Price </div>
 
 								<a th:href="@{'/newdeal/'+${currentDeal.getDealid()}}"><i class="glyphicon glyphicon-pencil"></i></a>
+
+								<a th:href="@{'/user/home/delete/'+${currentDeal.getDealid()}}"><i class="glyphicon glyphicon-remove"></i></a>
+
+
+
 
 						</div>
 					</div>

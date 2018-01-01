@@ -71,4 +71,13 @@ public class DealController {
 
     }
 
+    @RequestMapping(value="/user/home/delete/{dealid}", method = RequestMethod.GET)
+    public ModelAndView deleteDeal(@PathVariable Long dealid) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/user/home");
+        dealService.deleteDealById(dealid);
+        return modelAndView;
+    }
+
+
 }
