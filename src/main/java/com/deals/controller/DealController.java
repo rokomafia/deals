@@ -29,28 +29,28 @@ public class DealController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value="/newdeal", method = RequestMethod.GET)
+    @RequestMapping(value="/user/deals/new", method = RequestMethod.GET)
     public ModelAndView createDeal(){
         ModelAndView modelAndView = new ModelAndView();
         Deal deal = new Deal();
-        modelAndView.setViewName("newdeal");
+        modelAndView.setViewName("deal");
         modelAndView.addObject("deal",deal);
         return modelAndView;
     }
-    @RequestMapping(value="/newdeal", method = RequestMethod.POST)
-    public ModelAndView createDeal(@Valid Deal deal, BindingResult bindingResult) {
+    @RequestMapping(value="/user/deals/new", method = RequestMethod.POST)
+    public ModelAndView saveDeal(@Valid Deal deal, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         deal.setCategoryid(1).setCityid(1).setUserid(user.getId());
         modelAndView.addObject("successMessage", "Deal has been created successfully");
-        modelAndView.addObject("deal", new Deal());
+        modelAndView.addObject("deal", deal);
         modelAndView.setViewName("redirect:/index");
             dealService.saveDeal(deal);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/newdeal/{dealid}", method = RequestMethod.GET)
+    @RequestMapping(value = "user/deals/edit/{dealid}", method = RequestMethod.GET)
     public ModelAndView edit(@ModelAttribute Deal deal,BindingResult result, @PathVariable Long dealid, Model model) {
         ModelAndView modelAndView=new ModelAndView();
         deal = dealService.findDealById(dealid);
@@ -59,22 +59,20 @@ public class DealController {
             result.rejectValue("dealid", "error.deal", "Deal with such id doesn't exist");
         }
         if (result.hasErrors()) {
-            modelAndView.setViewName("/newdeal");
+            modelAndView.setViewName("/deal");
         } else {
             //modelAndView.addObject("deal", deal);
-            modelAndView.setViewName("newdeal");
+            modelAndView.setViewName("/deal");
             model.addAttribute("deal", deal);
         }
-
-
         return modelAndView;
 
     }
 
-    @RequestMapping(value="/user/home/delete/{dealid}", method = RequestMethod.GET)
+    @RequestMapping(value="/user/deals/delete/{dealid}", method = RequestMethod.GET)
     public ModelAndView deleteDeal(@PathVariable Long dealid) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/user/home");
+        modelAndView.setViewName("redirect:/user/deals");
         dealService.deleteDealById(dealid);
         return modelAndView;
     }

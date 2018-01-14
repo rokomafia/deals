@@ -20,7 +20,7 @@
 		<span class="shape"><img th:src="@{/images/shape.png}" width="" height="16"/></span>
 		<span class="profile"><a href="#" class="dropdown">Профиль</a></span>
 		<span class="add-deal">
-		<form th:action="@{/newdeal}" method="get">
+		<form th:action="@{/user/deals/new}" method="get">
 			<button class="btn btn-md btn-info btn-block" type="Submit">+ Добавить</button>
 		</form></span>
 	</header>
@@ -44,18 +44,13 @@
 							<div class="panel-body" th:text="${currentDeal.getDescription()}" id="description"> Description </div>
 							<div class="panel-body" th:text="${currentDeal.getPrice()}"> Price </div>
 
-								<a th:href="@{'/newdeal/'+${currentDeal.getDealid()}}"><i class="glyphicon glyphicon-pencil"></i></a>
+								<a th:href="@{'/user/deals/edit/'+${currentDeal.getDealid()}}"><i class="glyphicon glyphicon-pencil"></i></a>
 
-								<a th:href="@{'/user/home/delete/'+${currentDeal.getDealid()}}"><i class="glyphicon glyphicon-remove"></i></a>
-
-
-
+								<a th:href="@{'/user/deals/delete/'+${currentDeal.getDealid()}}"><i class="glyphicon glyphicon-trash"></i></a>
 
 						</div>
 					</div>
 				</div>
-
-
 
 
 	</main><!-- .content -->

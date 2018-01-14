@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8" />
 	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-	<title>Deals</title>
+	<title>DealsHomePage</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
@@ -20,15 +20,12 @@
 	<header class="header">
         <span><a href="/"><img th:src="@{/images/logo.png}" width="" height="80"/></a></span>
         <span class="shape"><img th:src="@{/images/shape.png}" width="" height="16"/></span>
-		<span class="profile"><a href="#" class="dropdown">Профиль</a></span>
+		<span class="profile"><a href="#profile" class="dropdown">Профиль</a></span>
 		<span class="add-deal">
-		<form th:action="@{/newdeal}" method="get">
+		<form th:action="@{/user/deals/new}" method="get">
 			<button class="btn btn-md btn-info btn-block" type="Submit">+ Добавить</button>
 		</form></span>
 	</header>
-
-
-
 
 
 	<main class="content">

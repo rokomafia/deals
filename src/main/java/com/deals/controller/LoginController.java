@@ -17,10 +17,11 @@ import com.deals.model.User;
 import com.deals.service.UserService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class LoginController {
-	
+
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -37,8 +38,7 @@ public class LoginController {
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
-	
-	
+
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -60,11 +60,10 @@ public class LoginController {
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
-			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
-			modelAndView.addObject("user", new User());
-			modelAndView.setViewName("registration");
-			
+			modelAndView.addObject("user", user);
+			modelAndView.setViewName("redirect:/login");
+			userService.saveUser(user);
 		}
 		return modelAndView;
 	}
@@ -80,18 +79,18 @@ public class LoginController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/user/home", method = RequestMethod.GET)
-	public ModelAndView userHome() {
+	@RequestMapping(value="/user/deals", method = RequestMethod.GET)
+	public ModelAndView userDeals() {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
 		modelAndView.addObject("userMessage","Content Available Only for authorised Users and Admin");
 
-		List<Deal> deals= dealService.getAll();
+		List<Deal> deals= dealService.getAll().stream().filter((e)->e.getUserid()==user.getId()).collect(Collectors.toList());
 		modelAndView.addObject("deals",deals);
 		modelAndView.addObject("user",user);
-		modelAndView.setViewName("/user/home");
+		modelAndView.setViewName("/user/deals");
 		return modelAndView;
 	}
 

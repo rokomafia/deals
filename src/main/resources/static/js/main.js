@@ -6,8 +6,8 @@ $(document).ready(function(e) {
   			   buttons:[
   			       //Button 1
   				   {
-  					   text: 'Home', //Inner HTML
-  					   href: '/user/home', //<a> href
+  					   text: 'Deals', //Inner HTML
+  					   href: '/user/deals', //<a> href
   					   addClass: 'custom-button', //<li> Class
   					   onClick: function(p,e){
   						   return true; //Return true - will close dropdown, false - will keep dropwdown
