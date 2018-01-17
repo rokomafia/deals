@@ -30,7 +30,7 @@ public class Deal {
     private int userid;
     @Column(name = "cityid")
     @NotNull(message = "*Please provide your city")
-    private int cityid;
+    private Long cityid;
     @Column(name = "price")
     @NotNull(message = "*Please provide your price")
     private float price;
@@ -83,11 +83,11 @@ public class Deal {
         return this;
     }
 
-    public int getCityid() {
+    public Long getCityid() {
         return cityid;
     }
 
-    public Deal setCityid(int cityid) {
+    public Deal setCityid(Long cityid) {
         this.cityid = cityid;
         return this;
     }

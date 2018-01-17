@@ -57,6 +57,19 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                            <select class="form-control" id="sel1" th:field="*{cityid}">
+                                <option value="">Select city</option>
+                                <option th:each="city : ${cities}"
+                                        th:value="${city.getId()}"
+                                        th:text="${city.getName()}">
+                                </option>
+
+                            </select>
+                            </div>
+                        </div>
+
 
                         <!-- Create Button-->
                         <div class="form-group">

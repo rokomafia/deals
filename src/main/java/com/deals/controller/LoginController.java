@@ -27,10 +27,7 @@ public class LoginController {
 	@Autowired
 	DealService dealService;
 
-	@RequestMapping(value={"/","/index"})
-	public String index() {
-		return "/index";
-	}
+
 
 	@RequestMapping(value={"/login"}, method = RequestMethod.GET)
 	public ModelAndView login(){
@@ -76,31 +73,6 @@ public class LoginController {
 		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
 		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/home");
-		return modelAndView;
-	}
-
-	@RequestMapping(value="/user/deals", method = RequestMethod.GET)
-	public ModelAndView userDeals() {
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("userMessage","Content Available Only for authorised Users and Admin");
-
-		List<Deal> deals= dealService.getAll().stream().filter((e)->e.getUserid()==user.getId()).collect(Collectors.toList());
-		modelAndView.addObject("deals",deals);
-		modelAndView.addObject("user",user);
-		modelAndView.setViewName("/user/deals");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = {"/user/profile"}, method = RequestMethod.GET)
-	public ModelAndView profile() {
-		ModelAndView modelAndView = new ModelAndView();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userService.findUserByEmail(auth.getName());
-		modelAndView.addObject("user",user);
-		modelAndView.setViewName("/user/profile");
 		return modelAndView;
 	}
 	

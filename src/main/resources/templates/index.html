@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:tw="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8" />
-	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
-	<title>DealsHomePage</title>
+	<title>Deals</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
-    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
-    <link href="../static/css/jquery.dropdown.css" th:href="@{/css/jquery.dropdown.css}" rel="stylesheet" />
+	<link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+	<link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+	<link href="../static/css/jquery.dropdown.css" th:href="@{/css/jquery.dropdown.css}" rel="stylesheet" />
 </head>
 
 <body>
@@ -18,57 +16,43 @@
 <div class="wrapper">
 	<!-- .header-->
 	<header class="header">
-        <span><a href="/"><img th:src="@{/images/logo.png}" width="" height="80"/></a></span>
-        <span class="shape"><img th:src="@{/images/shape.png}" width="" height="16"/></span>
-		<span class="profile"><a href="#profile" class="dropdown">Профиль</a></span>
+		<span><a href="/"><img th:src="@{/images/logo.png}" width="" height="80"/></a></span>
+		<span class="shape"><img th:src="@{/images/shape.png}" width="" height="16"/></span>
+		<span class="profile"><a href="#" class="dropdown">Профиль</a></span>
 		<span class="add-deal">
 		<form th:action="@{/user/deals/new}" method="get">
 			<button class="btn btn-md btn-info btn-block" type="Submit">+ Добавить</button>
 		</form></span>
 	</header>
 
-
 	<main class="content">
-	<h2>Работы и конкурсы</h2>
-	<div class="search">
-	<span>Поиск</span>
-	</div>
+		<!-- Body Container (Deals)-->
 
-		<table class="table table-bordered">
-			<thead>
-			<tr>
-				<th>Заголовок</th>
-				<th>Категория</th>
-				<th>Описание</th>
-				<th>Заявки</th>
-				<th>Цена (грн.)</th>
-			</tr>
-			</thead>
-			<tbody>
-			<tr>
-				<td>John</td>
-				<td>John</td>
-				<td>John</td>
-				<td>Doe</td>
-				<td>john@example.com</td>
-			</tr>
-			<tr>
-				<td>Mary</td>
-				<td>Moe</td>
-				<td>John</td>
-				<td>John</td>
-				<td>mary@example.com</td>
-			</tr>
-			<tr>
-				<td>July</td>
-				<td>Dooley</td>
-				<td>John</td>
-				<td>John</td>
-				<td>july@example.com</td>
-			</tr>
-			</tbody>
-		</table>
-		
+		<!-- Deals Content -->
+		<div class="" id="created-deals">
+			<!-- Deals filter -->
+			<input class="form-control" id="myInput" type="text" placeholder="Search..">
+			<button class="btn btn-md btn-info" data-sort="project-name">Sort by Summary</button>
+			<button class="btn btn-md btn-info" data-sort="project-title">Sort by Category</button>
+			<button class="btn btn-md btn-info" data-sort="project-label">Sort by Price</button>
+			<button class="btn btn-md btn-info" id="viewSwitch">Change View</button>
+			<!-- Deals list -->
+			<div class="panel-group" th:each="currentDeal,iterationStatus: ${deals}">
+				<br>
+				<div class="panel panel-default" th:id="'panel_'+${iterationStatus.index}">
+					<div class="panel-heading" th:text="${currentDeal.getName()}" id="summary"> Summary </div>
+					<div class="panel-body" th:text="${currentDeal.getDescription()}" id="description"> Description </div>
+					<div class="panel-body" th:text="${currentDeal.getPrice()}"> Price </div>
+
+					<a th:href="@{'/user/deals/edit/'+${currentDeal.getDealid()}}"><i class="glyphicon glyphicon-pencil"></i></a>
+
+					<a th:href="@{'/user/deals/delete/'+${currentDeal.getDealid()}}"><i class="glyphicon glyphicon-trash"></i></a>
+
+				</div>
+			</div>
+		</div>
+
+
 	</main><!-- .content -->
 
 </div><!-- .wrapper -->
@@ -83,6 +67,6 @@
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/jquery.dropdown.min.js}"></script>
 
-	
+
 </body>
 </html>
